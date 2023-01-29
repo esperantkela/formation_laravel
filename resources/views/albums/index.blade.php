@@ -1,5 +1,7 @@
 @extends('layouts.app')
+@section('title', 'Bienvenue')
 @section('content')
+<a class="btn btn-primary mb-2" href="{{ route('albums.create') }}">AJouter une photo</a>
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
     <div class="col">
       <div class="card shadow-sm">

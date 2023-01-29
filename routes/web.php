@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AlbumController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +16,6 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::resource('/posts', PostController::class);
+Route::get('/', [AlbumController::class, 'index'])->name('albums.index');
+Route::resource('albums', AlbumController::class)->except('index');
+Route::get('about', AboutController::class);

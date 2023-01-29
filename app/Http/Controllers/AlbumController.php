@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
+use App\Models\Album;
 use Illuminate\Http\Request;
+use App\Http\Requests\AlbumRequest;
 
-class PostController extends Controller
+class AlbumController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,13 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            $albums = Album::all();
+
+           return view('albums.index', compact('albums'));
+        } catch (\Exception $ex) {
+            //throw $th;
+        }
     }
 
     /**
@@ -24,7 +31,11 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        try {
+            return view('albums.create');
+        } catch (\Exception) {
+            //throw $th;
+        }
     }
 
     /**
@@ -33,18 +44,26 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AlbumRequest $request)
     {
-        //
+        try {
+            Album::create([
+                'description' => $request->input('description')
+            ]);
+
+            return redirect()->route('albums.index');
+        } catch (\Exception $ex) {
+            //throw $th;
+        }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Post  $post
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
         //
     }
@@ -52,10 +71,10 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Post  $post
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +83,10 @@ class PostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Post  $post
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +94,10 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Post  $post
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
         //
     }
