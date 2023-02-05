@@ -27,4 +27,12 @@ class AlbumRequest extends FormRequest
            'description' => 'required|string|max:255|unique:albums'
         ];
     }
+
+    public function message()
+    {
+        return [
+            'description.required' => 'ce champs est requis',
+            'description.unique' => 'ce champs existe déjà',
+        ];
+    }
 }
