@@ -1,17 +1,19 @@
 @extends('layouts.app')
 @section('title', 'Créer un album')
 @section('content')
-<form class='form-group' method="post" action="{{ route('albums.store') }}">
-    @csrf
-    <h1>Enregigistrement photo</h1>
-    <label for="description">Description</label>
-    <input id="description" name='description' class="form-control @error('description')is-invalid @enderror" type="text">
-    @error('description')
-        <span class="invalid-feedback">{{ $message }}</span>
-    @enderror
+<div class="row col-4 offset-md-4">
+    <form class='form-group' method="post" action="{{ route('albums.store') }}">
+        @csrf
+        <h3>Enregistrement photo</h3>
+        <label for="description">Description</label>
+        <textarea name="description" class="form-control @error('description')is-invalid @enderror" cols="30" rows="5"></textarea>
+        @error('description')
+            <span class="invalid-feedback">{{ $message}}</span>
+        @enderror
 
-    <label for=""></label>
-    <input class="form-control" type="file" name="picture">
-    <input class="btn btn-primary mt-3" type="submit" value="Enregistrer">
-</form>
+        <label for=""></label>
+        <input class="form-control" type="file" name="picture">
+        <input class="btn btn-primary mt-3" type="submit" value="Enregistrer">
+    </form>
+</div>
 @endsection

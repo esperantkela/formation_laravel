@@ -67,7 +67,11 @@ class AlbumController extends Controller
      */
     public function show($id)
     {
-        //
+        try {
+            //code...
+        } catch (\Exception) {
+            //throw $th;
+        }
     }
 
     /**

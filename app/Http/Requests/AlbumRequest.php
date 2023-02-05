@@ -28,11 +28,4 @@ class AlbumRequest extends FormRequest
         ];
     }
 
-    public function message()
-    {
-        return [
-            'description.required' => 'ce champs est requis',
-            'description.unique' => 'ce champs existe déjà',
-        ];
-    }
 }
