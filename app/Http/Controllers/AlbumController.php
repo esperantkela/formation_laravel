@@ -47,13 +47,15 @@ class AlbumController extends Controller
     public function store(AlbumRequest $request)
     {
         try {
+
             Album::create([
                 'description' => $request->input('description')
             ]);
 
             return redirect()->route('albums.index');
+
         } catch (\Exception $ex) {
-            //throw $th;
+
         }
     }
 
