@@ -18,7 +18,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                         <a href='{{ route('albums.show', $album->id) }}'  class="btn btn-sm btn-outline-secondary">Voir</a>
-                        <a href="{{ route('albums.edit', $album->id) }}" type="button" class="btn btn-sm btn-outline-secondary">Editer</a>
+                        <a href="{{ route('albums.edit', $album->id ) }}" type="button" class="btn btn-sm btn-outline-secondary">Editer</a>
                     </div>
                     <small class="text-muted">{{ $album->created_at->format('d/m/Y') }}</small>
                 </div>
