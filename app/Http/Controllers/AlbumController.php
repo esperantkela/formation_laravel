@@ -50,7 +50,8 @@ class AlbumController extends Controller
         try {
 
             Album::create([
-                'description' => $request->input('description')
+                'description' => $request->input('description'),
+                'user_id' => Auth::user()->id,
             ]);
 
             return redirect()->route('albums.index');
