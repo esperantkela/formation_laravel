@@ -16,7 +16,13 @@ use App\Http\Controllers\AlbumController;
 |
 */
 
-Route::get('/', [AlbumController::class, 'index'])->name('albums.index');
-Route::get('delete-album/{album}', [AlbumController::class, 'destroy'])->name('albums.delete');
-Route::resource('albums', AlbumController::class)->except(['index', 'destroy']);
-Route::get('about', AboutController::class);
+Route::middleware('auth')->group(function () {
+    Route::get('/', [AlbumController::class, 'index'])->name('albums.index');
+    Route::get('delete-album/{album}', [AlbumController::class, 'destroy'])->name('albums.delete');
+    Route::resource('albums', AlbumController::class)->except(['index', 'destroy']);
+    Route::get('about', AboutController::class);
+});
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
